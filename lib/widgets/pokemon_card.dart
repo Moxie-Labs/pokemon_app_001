@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../models/pokemon.dart';
 
 class PokemonCard extends StatelessWidget {
   final Pokemon pokemon;
 
-  const PokemonCard({required this.pokemon});
+  const PokemonCard({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {

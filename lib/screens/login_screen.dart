@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_app_001/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }

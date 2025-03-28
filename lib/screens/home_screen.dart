@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_app_001/models/pokemon.dart';
 import 'package:provider/provider.dart';
+
 import '../services/api_service.dart';
 import '../widgets/pokemon_card.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -18,7 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<List<Pokemon>> _fetchPokemon() async {
-    return await Provider.of<ApiService>(context, listen: false).fetchRandomPokemon();
+    return await Provider.of<ApiService>(
+      context,
+      listen: false,
+    ).fetchRandomPokemon();
   }
 
   void _refresh() {
@@ -32,12 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Random Pokémon'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: _refresh,
-          ),
-        ],
+        actions: [IconButton(icon: Icon(Icons.refresh), onPressed: _refresh)],
       ),
       body: FutureBuilder<List<Pokemon>>(
         future: _pokemonFuture,

@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:math';
+
 import 'package:http/http.dart' as http;
+
 import '../models/pokemon.dart';
 
 class ApiService {
@@ -10,11 +13,12 @@ class ApiService {
     final List<Pokemon> pokemons = [];
 
     while (pokemons.length < 10) {
-      final randomId = random.nextInt(1010) + 1; // There are currently 1010 Pokémon
+      final randomId =
+          random.nextInt(1010) + 1; // There are currently 1010 Pokémon
       final response = await http.get(Uri.parse('$baseUrl/pokemon/$randomId'));
-      
+
       if (response.statusCode == 200) {
-        pokemons.add(Pokemon.fromJson(json.decode(response.body)));
+        pokemons.add(Pokemon.fromJson(jsonDecode(response.body)));
       }
     }
 
